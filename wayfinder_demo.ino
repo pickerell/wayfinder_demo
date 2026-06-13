@@ -4,8 +4,10 @@
 
 float throttle = 0;
 float yaw = 0;
-float wheelAccel = .0005;
-float wheelDecel = 1;
+float speedAccel = .5;
+float speedDecel = 2;
+float turnAccel = .5;
+float turnDecel = 2;
 
 void setup() {
   Serial.begin(115200);
@@ -19,7 +21,7 @@ void loop() {
   yaw = -getInput(ch1);
   
   if(active()) {
-    drive(throttle, yaw, wheelAccel, wheelDecel);
+    drive(throttle, yaw, speedAccel, speedDecel, turnAccel, turnDecel);
     joystick(throttle, yaw);
   } else {
     park();
